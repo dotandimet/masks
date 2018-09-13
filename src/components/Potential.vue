@@ -1,7 +1,10 @@
 <template>
 <div>
     <h2>Potential</h2>
-    <input type="radio" v-for="box in boxes" v-bind:checked="(box<=value)?true:false" v-bind:key="box">
+    <input type="radio" v-for="box in boxes"
+      v-bind:checked="(box<=value)?true:false"
+      v-bind:disabled="(box!==value+1)?true:false"
+      v-bind:key="box">
 </div>    
 </template>
 <script>

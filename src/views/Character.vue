@@ -2,7 +2,7 @@
   <div class="home">
     <Labels></Labels>
     <Conditions></Conditions>
-    <Potential></Potential>
+    <Potential v-model="potential"></Potential>
     <Moves></Moves>
     <Stuff></Stuff>
   </div>
@@ -17,13 +17,20 @@ import Moves from '@/components/Moves.vue'
 import Stuff from '@/components/Stuff.vue'
 
 export default {
-  name: 'home',
+  name: 'Character',
   components: {
     Labels,
     Conditions,
     Moves,
     Potential,
     Stuff
+  },
+  data: function() {
+    return {
+      labels: [ 1, 2, 0, -1, -2 ],
+      potential: 3,
+      conditions: {'Afraid': true}
+    }
   }
 }
 </script>

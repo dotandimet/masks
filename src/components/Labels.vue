@@ -23,6 +23,11 @@ export default {
         ]
     } 
     },
+    methods: {
+        shiftLabels: function(up, down) {
+
+        }
+    },
     components: {
         MasksLabel
     }
@@ -35,8 +40,10 @@ export default {
     flex-direction: column;
     flex-basis: 50px;
     justify-content: flex-start;
+    border: solid aqua 1px;
 }
 .mls-list h2 {
     text-align: start;
+    border-top-width: 3px;
 }
 </style>

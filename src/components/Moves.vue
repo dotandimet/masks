@@ -1,5 +1,7 @@
 <template>
-<h2>Moves</h2>    
+<div class="mls-list">
+<h2>Moves</h2>
+</div>
 </template>
 <script>
 export default {

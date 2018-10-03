@@ -1,10 +1,14 @@
 <template>
-<div>
+<div class="mls-list ml">
     <h2>Potential</h2>
-    <input type="radio" v-for="box in boxes"
+    <div  v-for="box in boxes"
+      v-bind:key="box"
+      class="pot-box">
+    <input type="radio"
       v-bind:checked="(box<=value)?true:false"
       v-bind:disabled="(box!==value+1)?true:false"
-      v-bind:key="box">
+      >
+      </div>
 </div>    
 </template>
 <script>
@@ -18,3 +22,17 @@ export default {
 
 }
 </script>
+<style scoped>
+.ml {
+    display: grid;
+    grid-template-columns: 35% 10% 10% 10% 10% 10% 10%;
+    box-sizing: border-box;
+}
+.pot-box {
+    padding-top: 30px;
+    background: transparent;
+}
+.pot-box input {
+    background: transparent;
+}
+</style>

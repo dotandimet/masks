@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="mls-list">
 <h2>Stuff</h2>
   <form v-on:submit.prevent="addNewTodo">
     <label for="new-todo">Add a todo</label>

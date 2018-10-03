@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Labels></Labels>
-    <Conditions></Conditions>
+    <Labels v-model="labels"></Labels>
+    <Conditions v-model="conditions"></Conditions>
     <Potential v-model="potential"></Potential>
     <Moves></Moves>
     <Stuff></Stuff>
@@ -29,7 +29,7 @@ export default {
     return {
       labels: [ 1, 2, 0, -1, -2 ],
       potential: 3,
-      conditions: {'Afraid': true}
+      conditions: {'Afraid': true, 'Hopeless': true, 'Insecure': false}
     }
   }
 }

@@ -1,9 +1,13 @@
 <template>
     <div class="ml">
         <div class="ml-title">{{ title }}</div>
-        <button class="ml-down">-</button>
-        <div class="ml-value">{{ value }}</div>
-        <button class="ml-up">+</button>
+        <div v-for="s in scale" v-bind:key="s"
+             v-bind:class="{'ml-value': true,
+                            'ml-value-active': (s===value),
+                            'ml-positive': (s>0)}">
+        {{ s }}
+
+        </div>
     </div>
 </template>
 <script>
@@ -13,9 +17,15 @@ export default {
         title: String,
         value: Number
     },
+    data: function() { 
+        return {
+                scale: [-2, -1, 0, 1, 2, 3] 
+                }
+    },
     computed: {
         canUp: function() { return (this.value < 3) ? true : false },
-        canDown: function() { return (this.value > -3) ? true : false }
+        canDown: function() { return (this.value > -2) ? true : false },
+
     },
     methods: {
         shiftUp: function () {
@@ -27,7 +37,10 @@ export default {
 <style scoped>
 .ml {
     display: grid;
-    grid-template-columns: 35% 10% 15% 10%;
+    grid-template-columns: 35% 10% 10% 10% 10% 10% 10%;
+    box-sizing: border-box;
+    background-color: aqua;
+    margin-bottom: 0.3rem;
 }
 .ml-title, .ml-value {
     font-weight: 900;
@@ -38,21 +51,14 @@ export default {
 }
 .ml-value {
     justify-self: center;
-}
-.ml-up {
-    justify-self: end;
-}
-.ml-down {
-    justify-self: start;
-}
-.ml-up, .ml-down {
     background-color: aqua;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 3px double white;
-    box-shadow: 0px 0px 10px silver;
-    outline: none;
+}
+.ml-value-active {
+    background-color: white;
+    color: slategray;
+}
+.ml-positive::before {
+ content: '+';
 }
 </style>
 

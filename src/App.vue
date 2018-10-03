@@ -17,4 +17,23 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+.mls-list {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50px;
+  justify-content: flex-start;
+}
+.mls-list h2 {
+  text-align: start;
+  border-top: 3px rgb(61, 185, 235) solid;
+  padding-top: 4px;
+  border-top-color: rgb(61, 185, 235);
+  text-transform: uppercase;
+  padding-left: 6px;
+  border-left: 3px rgb(61,185,235) solid;
+  transform: skew(-15deg, 0deg);
+  background-image: linear-gradient(rgb(61,185,235), white)
+}
+
 </style>

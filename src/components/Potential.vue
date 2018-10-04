@@ -6,7 +6,8 @@
       class="pot-box">
     <input type="radio"
       v-bind:checked="(box<=value)?true:false"
-      v-bind:disabled="(box!==value+1)?true:false"
+      v-bind:value="box"
+      v-bind:click="markPotential"
       >
       </div>
 </div>    
@@ -17,6 +18,13 @@ export default {
     computed: {
         boxes: function( ) {
             return [1,2,3,4,5];
+        }
+    },
+    methods: {
+        markPotential: function(event) {
+            if (event.target.value > this.value) {
+                this.$emit('input', event.target.value);
+            }
         }
     }
 

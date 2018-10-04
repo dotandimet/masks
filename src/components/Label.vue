@@ -4,7 +4,11 @@
         <div v-for="s in scale" v-bind:key="s"
              v-bind:class="{'ml-value': true,
                             'ml-value-active': (s===value),
-                            'ml-positive': (s>0)}">
+                            'ml-down': (s+1===value),
+                            'ml-up': (s-1===value),
+                            'ml-positive': (s>0)}"
+             v-on:click="shiftLabel(s)"
+                            >
         {{ s }}
 
         </div>
@@ -28,8 +32,10 @@ export default {
 
     },
     methods: {
-        shiftUp: function () {
-            
+        shiftLabel: function (new_val) {
+            if (new_val+1 === this.value || new_val-1 === this.value) {
+                this.$emit('shifted', new_val);
+            }
         }
     }
 }
@@ -59,6 +65,10 @@ export default {
 }
 .ml-positive::before {
  content: '+';
+}
+.ml-up:hover, .ml-down:hover {
+    color: white;
+    background-color: royalblue;
 }
 </style>
 

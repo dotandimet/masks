@@ -4,7 +4,7 @@
     <Conditions v-model="conditions"></Conditions>
     <Potential v-model="potential"></Potential>
     <Moves></Moves>
-    <Stuff></Stuff>
+    <Notes v-model="notes"></Notes>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import Labels from '@/components/Labels.vue'
 import Conditions from '@/components/Conditions.vue'
 import Potential from '@/components/Potential.vue'
 import Moves from '@/components/Moves.vue'
-import Stuff from '@/components/Stuff.vue'
+import Notes from '@/components/Notes.vue'
 
 export default {
   name: 'Character',
@@ -23,13 +23,15 @@ export default {
     Conditions,
     Moves,
     Potential,
-    Stuff
+    Notes
   },
   data: function() {
     return {
       labels: [ 1, 2, 0, -1, -2 ],
       potential: 3,
-      conditions: {'Afraid': true, 'Hopeless': true, 'Insecure': false}
+      conditions: {'Afraid': true, 'Hopeless': true, 'Insecure': false},
+      advancements: [],
+      notes: [ { id: 1, title: 'Hello'}]
     }
   }
 }

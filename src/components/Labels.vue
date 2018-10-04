@@ -1,10 +1,12 @@
 <template>
     <div class="mls-list">
         <h2>Labels</h2>
+        <div>{{ msg }}</div>
         <MasksLabel v-for="(label, index) in value"
             v-bind:title="titles[index].title"
              v-bind:value="label"
              v-bind:key="label.title"
+             v-on:shifted="updateLabel(index, $event)"
              > </MasksLabel>       
     </div>
 </template>
@@ -23,13 +25,22 @@ export default {
         { title: "Savior", value: 0 },
         { title: "Superior", value: 0 },
         { title: "Mundane", value: 0 }
-      ]
+      ],
+      msg: ''
     };
   },
   computed: {
       all_labels: function() { return this.value.join(', '); }
   },
   methods: {
+    alert: function(notice) {
+        this.msg = notice;
+    },
+    updateLabel: function(index, label) {
+        let newArray = this.value.map( (x,i) => (i===index) ? label : x );
+        this.alert("Values: "+ this.value.join(',') + "Index: " + index + ", label: " + label + " labels: " + newArray.join(','));
+        this.$emit('input', newArray);
+    },
     shiftLabels: function(up, down) { 
         let up_i = this.titles.findIndex( (item) => item.title === up );    
         let down_i = this.titles.findIndex( (item) => item.title === down );

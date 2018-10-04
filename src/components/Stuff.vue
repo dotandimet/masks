@@ -1,11 +1,11 @@
 <template>
 <div class="mls-list">
 <h2>Stuff</h2>
-  <form v-on:submit.prevent="addNewTodo">
-    <label for="new-todo">Add a todo</label>
+  <form v-on:submit.prevent="addNewNote">
+    <label for="new-note">Add a note</label>
     <input
-      v-model="newTodoText"
-      id="new-todo"
+      v-model="newNoteText"
+      id="new-note"
       placeholder="E.g. Feed the cat"
     >
     <button>Add</button>
@@ -13,10 +13,10 @@
   <ul>
     <li
       is="Item"
-      v-for="(todo, index) in todos"
-      v-bind:key="todo.id"
-      v-bind:title="todo.title"
-      v-on:remove="todos.splice(index, 1)"
+      v-for="(note, index) in notes"
+      v-bind:key="note.id"
+      v-bind:title="note.title"
+      v-on:remove="notes.splice(index, 1)"
     ></li>
   </ul>
 </div>
@@ -31,8 +31,8 @@ export default {
     },
     data: function() {
         return {
-    newTodoText: '',
-    todos: [
+    newNoteText: '',
+    notes: [
       {
         id: 1,
         title: 'Do the dishes',
@@ -46,16 +46,16 @@ export default {
         title: 'Mow the lawn'
       }
     ],
-    nextTodoId: 4
+    nextNoteId: 4
   }
   },
   methods: {
-    addNewTodo: function () {
-      this.todos.push({
-        id: this.nextTodoId++,
-        title: this.newTodoText
+    addNewNote: function () {
+      this.notes.push({
+        id: this.nextNoteId++,
+        title: this.newNoteText
       })
-      this.newTodoText = ''
+      this.newNoteText = ''
     }
   }
 }

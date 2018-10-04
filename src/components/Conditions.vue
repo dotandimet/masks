@@ -1,12 +1,10 @@
 <template>
 <div class="mls-list">
 <h2>Conditions</h2>
-<div v-for="cond in all_conditions" v-bind:key="cond.name">
-<div>
-<input type="checkbox" v-bind:checked="value[cond.name]">
-❑ ❑
-</div>
-<div>{{ cond.name }}</div>
+<div v-for="cond in all_conditions" v-bind:key="cond.name" class="ml-cond">
+<input type="checkbox" v-bind:checked="value[cond.name]" v-bind:id="cond.name">
+<!-- ❑ ❑ -->
+<label v-bind:for="cond.name">{{ cond.name }}</label>
 <div>{{ cond.description }} </div>
 </div>
 </div>
@@ -15,7 +13,7 @@
 <script>
 export default {
     name: 'Conditions',
-    props: ['value'],
+    props: { 'value': Object },
     data: function() {
         return {
             'all_conditions': [
@@ -28,4 +26,19 @@ export default {
     }
 }
 </script>
-
+<style scoped>
+.ml-cond {   
+    display: grid;
+    grid-template-columns: 10% 20% 1fr;
+    box-sizing: border-box;
+    text-align: start;
+}
+input[type="checkbox"] {
+    padding: 10px;
+}
+input[type="checkbox"]:checked ~ label,
+input[type="checkbox"]:checked ~ div
+ {
+    font-weight: bold;
+}
+</style>

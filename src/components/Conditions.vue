@@ -33,9 +33,6 @@ export default {
     box-sizing: border-box;
     text-align: start;
 }
-input[type="checkbox"] {
-    padding: 10px;
-}
 input[type="checkbox"]:checked ~ label,
 input[type="checkbox"]:checked ~ div
  {

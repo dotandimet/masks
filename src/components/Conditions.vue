@@ -2,7 +2,10 @@
 <div class="mls-list">
 <h2>Conditions</h2>
 <div v-for="cond in all_conditions" v-bind:key="cond.name" class="ml-cond">
-<input type="checkbox" v-bind:checked="value[cond.name]" v-bind:id="cond.name">
+<input type="checkbox" 
+       v-model="value[cond.name]"
+       v-on:change="conditionChange"
+       v-bind:id="cond.name">
 <!-- ❑ ❑ -->
 <label v-bind:for="cond.name">{{ cond.name }}</label>
 <div>{{ cond.description }} </div>
@@ -23,6 +26,16 @@ export default {
 { 'name': 'Hopeless', 'description': '(-2 to unleash your powers)' },
 { 'name': 'Insecure', 'description': '(-2 to defend someone or reject others’ influence)' }
         ] };
+    },
+    methods: {
+        conditionChange(event) {
+            if (event.target.checked) {
+                this.$emit('mark', event.target.id)
+            }
+            else {
+                this.$emit('clear', event.target.id)
+            }
+        }
     }
 }
 </script>
@@ -33,7 +46,7 @@ export default {
     box-sizing: border-box;
     text-align: start;
 }
-input[type="checkbox"]:checked ~ label,
+div > input[type="checkbox"]:checked ~ label,
 input[type="checkbox"]:checked ~ div
  {
     font-weight: bold;

@@ -7,7 +7,7 @@
     <input type="radio"
       v-bind:checked="(box<=value)?true:false"
       v-bind:value="box"
-      v-bind:click="markPotential"
+      v-on:click="markPotential"
       >
       </div>
 </div>    

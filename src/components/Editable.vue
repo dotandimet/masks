@@ -31,8 +31,10 @@ export default {
       this.currentText = e.target.value
     },
     unedit () {
-      this.editMode = false
-      this.$emit('input', this.currentText)
+      if (this.currentText.length > 0) {
+        this.editMode = false
+        this.$emit('input', this.currentText)
+      }
     }
   }
 }

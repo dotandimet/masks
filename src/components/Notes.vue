@@ -38,18 +38,14 @@ export default {
   },
   methods: {
     addNewNote: function () {
-      let notes = Array.from(this.value);
-      notes.push({
+      this.$emit('add', {
         id: this.nextNoteId++,
         title: this.newNoteText
       });
-      this.$emit('input', notes);
       this.newNoteText = ''
     },
     removeNote: function(index){
-      let notes = Array.from(this.value);
-      notes.splice(index, 1);
-      this.$emit('input', notes);
+      this.$emit('remove', index);
     }
   }
 }

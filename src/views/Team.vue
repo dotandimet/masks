@@ -24,6 +24,7 @@ export default {
    },
    methods: {
        doLoad() {
+            console.log("Are you sure you want to do this?");
             const obj = JSON.parse(this.load)
             if (typeof obj === 'object') { // give it a go...
                 this.$store.dispatch('loadCharacter', obj) // and god have mercy

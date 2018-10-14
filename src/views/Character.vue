@@ -1,6 +1,6 @@
 <template>
   <div class="character">
-    <h2><Editable v-bind:value="name"></Editable></h2>
+    <h2><Editable v-model="name"></Editable></h2>
     <dl class="info">
       <dt>Archtype:</dt><dd><Editable v-model="archtype"></Editable></dd>
       <dt>Real Name:</dt><dd><Editable v-model="real_name"></Editable></dd>
@@ -56,6 +56,17 @@ export default {
       },
       set(value) {
         this.$store.commit({type: 'updateLabels', labels: value})
+      }
+    },
+    name: {
+      get() {
+        return this.$store.state.name
+        },
+      set(value) {
+        this.$store.commit({ type: 'updateCharacterField',
+                             field: 'name',
+                             value: value
+                             })
       }
     },
     real_name: {
